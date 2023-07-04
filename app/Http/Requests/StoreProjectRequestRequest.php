@@ -39,8 +39,8 @@ class StoreProjectRequestRequest extends FormRequest
             'end_date'      => 'required|date|after_or_equal:start_date',
             'language'      => 'required|in:Arabic,English',
             'nationalities' => 'required|in:arab,western',
-            'daily_rate'    => '',
-            'days'          => '',
+            'daily_rate'    => 'required|integer|min:1',
+            'days'          => 'required|integer|min:1',
 
         ];
     }

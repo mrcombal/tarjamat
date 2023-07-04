@@ -2,54 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCandidateRegistrationRequest;
 use App\Models\Candidate;
 use App\Models\Certificate;
 use App\Models\Course;
 use App\Models\Skill;
-use App\Http\Requests\StoreCandidateRequest;
-use Webpatser\Countries\Countries;
+use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Webpatser\Countries\Countries;
 
-
-class CandidateController extends Controller
+class RegistrationController extends Controller
 {
-    public function list() {
-        $candidates = Candidate::all();
-        return view('admin.candidates.list', compact('candidates'));
-    }
-
     public function create() {
-        $method = 'post';
-        $candidate = new Candidate();
         $countries = Countries::all();
         $skills = Skill::all();
         $courses = Course::all();
         $certificates = Certificate::all();
-        return view('admin.candidates.candidate-form', compact('method', 'candidate', 'countries', 'skills', 'courses', 'certificates'));
+        return view('client.cv-form', compact('countries', 'skills', 'courses', 'certificates'));
     }
 
-    public function store(StoreCandidateRequest $request) {
+    public function store(StoreCandidateRegistrationRequest $request) {
         $candidate = Candidate::create($request->all());
         $candidate->skills()->attach($request->skills);
 
         $courses_data = [];
         $counter = 0;
         foreach($request->get('courses') as $course_id) {
-            $courses_data[$course_id] = [
-                'experience'    => $request->get('experiences')[$counter],
-                'tier'          => $request->get('tiers')[$counter]
-            ];
-            $counter++;
+            if($course_id) {
+                $courses_data[$course_id] = [
+                    'experience'    => $request->get('experiences')[$counter],
+                ];
+                $counter++;
+            }
         }
         $candidate->courses()->sync($courses_data);
 
         $certificates_data = [];
         $counter = 0;
         foreach($request->get('certificates') as $certificate_id) {
-            $certificates_data[$certificate_id] = [
-                'certified_at' => $request->get('certification_dates')[$counter]
-            ];
-            $counter++;
+            if($certificate_id) {
+                $certificates_data[$certificate_id] = [
+                    'certified_at' => $request->get('certification_dates')[$counter]
+                ];
+                $counter++;
+            }
         }
         $candidate->certificates()->sync($certificates_data);
 
@@ -71,12 +67,7 @@ class CandidateController extends Controller
             $candidate->save();
         }
 
-        return redirect()->route('candidate.list')->with('message', $candidate->name.'  has been added!');
-    }
+        return redirect()->route('web.candidate.create')->with('message', 'Thank you for submitting your CV. Our team is currently reviewing your submission and will get back to you shortly.');
 
-    public function profile($id) {
-        $candidate = Candidate::find($id);
-        if(!$candidate) abort(404);
-        return view('admin.candidates.profile', compact('candidate'));
     }
 }

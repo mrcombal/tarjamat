@@ -8,6 +8,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ClientController;
 use App\Models\ProjectRequestController;
+use App\Http\Controllers\RegistrationController;
 
 
 
@@ -46,5 +47,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
 Route::get('admin/login', [AdminController::class, 'getLogin'])->name('admin.login');
 Route::post('admin/login', [AdminController::class, 'postLogin'])->name('admin.auth');
 
-Route::post('request', [ProjectRequestController::class, 'store'])->name('request.store');
-Route::get('request', [ProjectRequestController::class, 'create'])->name('request.create');
+Route::post('register', [RegistrationController::class, 'store'])->name('web.candidate.store');
+Route::get('register', [RegistrationController::class, 'create'])->name('web.candidate.create');
+
+Route::post('request', [ProjectRequestController::class, 'store'])->name('web.request.store');
+Route::get('request', [ProjectRequestController::class, 'create'])->name('web.request.create');

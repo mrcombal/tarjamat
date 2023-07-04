@@ -27,10 +27,10 @@
                 @endif
                 <h3 class="widget-title pull-left ml-20" style="margin-top:35px; font-size:1.8em;">
                     {{$candidate->name}}<br><small style="" class="pull-left">{{$candidate->tagline}}</small>
-                    <div class="contact-info mt-10" style="font-size: .55em">
-                        <div class="phone text-muted">{{ $candidate->mobile }}</div>
-                        <div class="email text-muted">{{ $candidate->email }}</div>
-                    </div>
+                    <!--
+                    <div class="contact-info mt-30" style="font-size: .55em">
+                        <span class="phone text-muted">{{ $candidate->mobile }}</span> - <span class="email text-muted">{{ $candidate->email }}</span>
+                    </div>-->
                 </h3>
                 @if($candidate->resume_file)
                     <a href="{{asset('resumes/'.$candidate->resume_file)}}" class="btn btn-default btn-lg pull-right mt-30" download=""><i class="ti-download"></i> Download resume</a>
@@ -47,6 +47,7 @@
             </div>
             @endif
 
+            <h4>Courses</h4>
             <table class="table table-bordered table-striped">
                 <tr>
                     <th>Course</th>
@@ -58,6 +59,22 @@
                         <td>{{$course->name}}</td>
                         <td>{{$course->pivot->experience}} {{ (intval($course->pivot->experience) > 1) ? 'years' : 'year' }}</td>
                         <td>Tier {{ $course->pivot->tier }}</td>
+                    </tr>
+                @endforeach
+            </table>
+
+            <h4>Certificates</h4>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Certificate</th>
+                    <th>Vendor</th>
+                    <th>Certified at</th>
+                </tr>
+                @foreach($candidate->certificates as $certificate)
+                    <tr>
+                        <td>{{$certificate->name}}</td>
+                        <td>{{$certificate->vendor->name}}</td>
+                        <td>{{$certificate->pivot->certified_at}}</td>
                     </tr>
                 @endforeach
             </table>

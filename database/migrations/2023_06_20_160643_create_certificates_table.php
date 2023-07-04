@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedBigInteger('vendor_id');
+            $table->foreign('vendor_id')->references('id')->on('vendors')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('expires_in')->default(0); // Certificate expiry duration in years. 0 = it does not expire
             $table->timestamps();
         });
     }

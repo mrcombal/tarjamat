@@ -18,4 +18,8 @@ class Candidate extends Model
     public function courses() {
         return $this->belongsToMany(Course::class)->withPivot('experience', 'tier');
     }
+
+    public function certificates() {
+        return $this->belongsToMany(Certificate::class)->withPivot('certified_at');
+    }
 }

@@ -30,7 +30,7 @@
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app/css/flat.css')}}">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <style>
         .select2-container {
             width: 100%;
@@ -197,7 +197,9 @@
 
                     </div>
                 </div>
+
                 <hr>
+
                 <h4>Courses</h4>
                 <div class="row mb-10">
                     <div class="col-md-8">Course name</div>
@@ -229,8 +231,33 @@
                         <button class="btn remove-course-btn" type="button"><i class="ti-trash"></i></button>
                     </div>
                 </div>
-
                 <button type="button" class="btn btn-info" id="add-course"><i class="ti-plus"></i> add another course</button>
+
+                <hr>
+
+                <h4>Certificates</h4>
+                <div class="row mb-10">
+                    <div class="col-md-8">Certificate</div>
+                    <div class="col-md-4">Issued at</div>
+                </div>
+                <div id="certificates-list">
+                    <div class="row certificate-entry" id="certificate-entry" style="position:relative;">
+                        <div class="col-md-8">
+                            <select name="certificates[]" class="form-control input-lg certificates" style="width: 100%;">
+                                <option></option>
+                                @foreach($certificates as $certificate)
+                                    <option value="{{$certificate->id}}">{{$certificate->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="experience" type="date" class="form-control input-lg mb-20" name="certification_dates[]" placeholder="in years">
+                        </div>
+                        <button class="btn remove-course-btn" type="button"><i class="ti-trash"></i></button>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-info" id="add-certificate"><i class="ti-plus"></i> add another certificate</button>
                 <br>
 
 
@@ -244,17 +271,19 @@
 @stop
 
 @section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script>
 
         $(document).ready(function() {
-            let main_course_entry = $('#course-entry');
-            let courses_template = main_course_entry.clone().removeAttr('id');
+            let main_course_entry       = $('#course-entry');
+            let main_certificate_entry  = $('#certificate-entry');
+            let courses_template        = main_course_entry.clone().removeAttr('id');
+            let certificate_template    = main_certificate_entry.clone().removeAttr('id');
             main_course_entry.find('.remove-course-btn').remove();
+            main_certificate_entry.find('.remove-certificate-btn').remove();
             let course_list = $('#courses-list');
-            $('#skills').select2({
-                width: 'resolve'
-            });
+            let certificate_list = $('#certificates-list');
+            $('#skills').select2({ width: 'resolve' });
             $('.tiers').select2({
                 width: 'resolve',
                 placeholder: 'select a tier..'
@@ -262,6 +291,10 @@
             $('.courses').select2({
                 width: 'resolve',
                 placeholder: 'select a course..'
+            });
+            $('.certificates').select2({
+                width: 'resolve',
+                placeholder: 'select a certificate..'
             });
             $('#gender').on('change', function() {
                 if(!$("#image_file").val()) {
@@ -281,6 +314,7 @@
             $("#image_file").change(function(){
                 readURL(this);
             });
+
             /*******/
 
             $('#add-course').on('click', function() {
@@ -295,10 +329,24 @@
                 });
             });
 
+            /*******/
+
+            $('#add-certificate').on('click', function() {
+                certificate_list.append(certificate_template.clone());
+                certificate_list.find('.certificates').last().select2({
+                    width: 'resolve',
+                    placeholder: 'select a certificate..'
+                });
+            });
+
             /******/
 
             $('body').on('click', '.remove-course-btn', function() {
                 $(this).closest('.course-entry').remove();
+            });
+
+            $('body').on('click', '.remove-certificate-btn', function() {
+                $(this).closest('.certificate-entry').remove();
             });
 
         });

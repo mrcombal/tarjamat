@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Certificate extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+
+    protected $fillable = ['name', 'vendor_id', 'expires_in'];
+
+    public function vendor() {
+        return $this->belongsTo(Vendor::class);
+    }
 }
