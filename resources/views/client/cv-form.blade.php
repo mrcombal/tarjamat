@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/first-layout.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/checkbox-radio/checkbox_radio_font.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/jquery.radiosforbuttons/bootstrap-buttons.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/material-design-iconic-font/dist/css/material-design-iconic-font.min.css')}}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
 
@@ -71,6 +72,13 @@
         .body-bg-full.v3 .form-control {
             border-color: #e6e6e6;
         }
+
+        .icon-container {
+            display: inline-block;
+            border: 1px solid #c1272d;
+            border-radius: 50%;
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -80,6 +88,24 @@
             <div class="main-content">
                 <div class="v3">
                     <h1 class="text-left mt-0 mb-20" style="font-size: 1.8em;font-weight: bold;color: #454545;text-transform: capitalize"><span style="font-weight: 100;color: #c1282e;">Candidate</span> Registration</h1>
+                    <hr>
+                    @if(session()->has('message'))
+                    <div class="success text-left">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <i class="zmdi zmdi-check-circle" style="color: #c1272d; font-size: 13rem;"></i>
+                            </div>
+                            <div class="col-md-10">
+                                <h2 style="font-size: 2.25rem; font-weight: bold; color: #454545; text-transform: capitalize; ">
+                                    <span style="font-weight: 100;color: #c1282e;">Thank</span> you
+                                </h2>
+                                <p>{{session()->get('message')}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+
+                    @if(!session()->has('message'))
                     <form method="post" class="form-horizontal" enctype="multipart/form-data">
                         {{csrf_field()}}
                         @if(count($errors) > 0)
@@ -96,6 +122,7 @@
                                 @endif
                             </div>
                         @endif
+
 
 
                         <div class="row">
@@ -221,6 +248,8 @@
 
                         <button type="submit" class="btn-lg btn btn-primary btn-block mt-20">Sign up</button>
                     </form>
+                    @endif
+
                 </div>
             </div>
             <div class="sub-content">

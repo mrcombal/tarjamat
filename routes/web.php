@@ -13,6 +13,7 @@ use App\Http\Controllers\RegistrationController;
 
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
+    Route::post('/ajax/verify', [AjaxController::class, 'verify'])->name('ajax.verify');
 
     Route::post('/clients/create', [ClientController::class, 'store'])->name('client.store');
     Route::get('/clients/create', [ClientController::class, 'create'])->name('client.create');

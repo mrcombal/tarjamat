@@ -22,8 +22,8 @@ return new class extends Migration
             $table->unsignedBigInteger('country_id')->nullable()->default(null); // nationality
             $table->foreign('country_id')->references('id')->on('countries')->onUpdate('cascade')->onDelete('set null');
             $table->string('resume_file')->nullable()->default(null);
-            $table->unsignedBigInteger('user_id')->nullable()->default(null);
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
+            $table->unsignedBigInteger('admin_id')->nullable()->default(null);
+            $table->foreign('admin_id')->references('id')->on('admins')->onUpdate('cascade')->onDelete('set null');
             $table->timestamp('verified_at')->nullable();
             $table->timestamps();
 

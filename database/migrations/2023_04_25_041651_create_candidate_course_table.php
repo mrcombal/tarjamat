@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('experience')->default(0); // years
-            $table->integer('tier')->default(1);    // 1, 2, 3, .. etc
+            $table->integer('tier')->nullable()->default(null);    // 1, 2, 3, .. etc
             $table->timestamps();
         });
     }

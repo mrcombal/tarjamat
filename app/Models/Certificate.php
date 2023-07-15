@@ -9,7 +9,7 @@ class Certificate extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'vendor_id', 'expires_in'];
+    protected $fillable = ['name', 'vendor_id'];
 
     public function vendor() {
         return $this->belongsTo(Vendor::class);

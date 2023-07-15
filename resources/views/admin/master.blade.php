@@ -112,7 +112,7 @@
     <script type="text/javascript" src="{{asset('plugins/blockUI/jquery.blockUI.js')}}"></script>
     <script type="text/javascript" src="{{asset('plugins/jquery-waypoints/waypoints.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('plugins/Counter-Up/jquery.counterup.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('plugins/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('plugins/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('plugins/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>

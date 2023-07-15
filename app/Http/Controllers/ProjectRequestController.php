@@ -1,16 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProjectRequestRequest;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\ProjectRequest;
 
-class ProjectRequestController extends Model
+class ProjectRequestController extends Controller
 {
-    use HasFactory;
-
     public function create() {
         return view('client.request-form');
     }
