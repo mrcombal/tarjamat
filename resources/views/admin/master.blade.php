@@ -82,7 +82,7 @@
             <ul class="list-unstyled navigation mb-20 mt-20">
                 <li class="sidebar-category pt-0">Management</li>
                 <li><a href="{{route('client.list')}}" class="{{Request::is('admin/clients*') ? 'active' : Request::url()}}"><i class="ti-briefcase"></i><span>Clients</span></a></li>
-                <li><a href="{{url('/admin/admin-user')}}" class="{{Request::is('admin/admin-user*') ? 'active' : Request::url()}}"><i class="ti-light-bulb"></i><span>Projects</span></a></li>
+                <li><a href="{{route('project.list')}}" class="{{Request::is('admin/projects*') ? 'active' : Request::url()}}"><i class="ti-light-bulb"></i><span>Projects</span></a></li>
                 <li><a href="{{url('/admin/admin-user')}}" class="{{Request::is('admin/admin-user*') ? 'active' : Request::url()}}"><i class="ti-user"></i><span>Users</span></a></li>
             </ul>
         </aside>

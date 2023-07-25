@@ -9,9 +9,13 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ProjectRequestController;
+use App\Http\Controllers\ProjectController;
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
     Route::post('/ajax/verify', [AjaxController::class, 'verify'])->name('ajax.verify');
+
+    Route::get('/projects', [ProjectController::class, 'list'])->name('project.list');
+
 
     Route::post('/clients/create', [ClientController::class, 'store'])->name('client.store');
     Route::get('/clients/create', [ClientController::class, 'create'])->name('client.create');
