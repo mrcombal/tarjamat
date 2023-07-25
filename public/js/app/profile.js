@@ -32,6 +32,7 @@ $(document).ready(function() {
                     label: "Edit",
                     className: "btn-info",
                     callback: function() {
+                        window.location.href = route('candidate.edit', candidate_id);
                     }
                 }
             }
