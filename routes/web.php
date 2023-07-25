@@ -10,8 +10,6 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ProjectRequestController;
 
-
-
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
     Route::post('/ajax/verify', [AjaxController::class, 'verify'])->name('ajax.verify');
 
