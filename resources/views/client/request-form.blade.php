@@ -26,8 +26,15 @@
             @if(session()->has('message'))
                 <div class="v2" style="box-shadow:none;">
                     <div class="success text-left">
+                        <div class="logo"><img src="{{asset('images/streamedops-colored-logo.svg')}}" alt="" style="max-width: 250px;"></div>
                         <h2 class="mt-0" style="font-size: 2.25rem; font-weight: bold; color: #454545; text-transform: capitalize; "><span style="font-weight: 100;color: #c1282e;">Thank</span> you</h2>
-                        <p class="mb-0">{!! session()->get('message') !!}</p>
+                        <p class="mb-30">{!! session()->get('message') !!}</p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{route('web.request.create')}}" class="btn btn-primary btn-lg btn-block">New request</a>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
