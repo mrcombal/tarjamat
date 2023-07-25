@@ -20,156 +20,126 @@
     <![endif]-->
 </head>
 
-<body style="background-color: #000232;" class="body-bg-full v3">
+<body style="background-color: #000232;" class="body-bg-full {{session()->has('message') ? "v2" : "v3"}}">
     <div class="container page-container">
         <div class="page-content" style="background-color: #c1272d;">
-            <div class="main-content">
-                <div class="v3" style="width: 400px;">
-                    <!--<div class="logo"><img src="{{asset('images/logo-emblem.svg')}}" alt="" width="80"></div>-->
-                    <h1 class="" style="font-size: 1.8em;font-weight: bold;color: #454545;text-transform: capitalize">
-                        <span style="font-weight: 100;color: #c1282e;">Project</span> request</h1>
-                    <form method="post" class="form-horizontal">
-                        {{csrf_field()}}
-                        @if(count($errors) > 0)
-                            <div class="alert alert-danger col-md-12">
-                                @if(count($errors) == 1)
-                                    {{$errors->first()}}
-                                @else
-                                    The following errors happened:
-                                    <ul>
-                                        @foreach($errors->all() as $error)
-                                            <li>{{$error}}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </div>
-                        @endif
+            @if(session()->has('message'))
+                <div class="v2" style="box-shadow:none;">
+                    <div class="success text-left">
+                        <h2 class="mt-0" style="font-size: 2.25rem; font-weight: bold; color: #454545; text-transform: capitalize; "><span style="font-weight: 100;color: #c1282e;">Thank</span> you</h2>
+                        <p class="mb-0">{!! session()->get('message') !!}</p>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="text" placeholder="Company or organization" class="form-control" name="client">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="text" placeholder="Email address" class="form-control" name="email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="text" placeholder="Expected schedule" class="form-control" id="date-range" name="schedule">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <div class="delivery-language">
-                                    <input type="radio" name="language" value="Arabic" id="arabic" checked>
-                                    <label for="arabic">Delivery in Arabic</label>
-                                    <input type="radio" name="language" value="English" id="english">
-                                    <label for="english">Delivery in English</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <textarea name="brief" id="brief" cols="30" rows="5" class="form-control" placeholder="Project brief"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <div class="instructor-type">
-                                    <input type="radio" name="nationalities" value="arab" id="arab" checked>
-                                    <label for="arab">Arab instructors</label>
-                                    <input type="radio" name="nationalities" value="western" id="western">
-                                    <label for="western">Western instructors</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="form-group">
-                                    <div class="col-xs-12">
-                                        <input id="daily-rate" type="text" placeholder="Daily rate" class="form-control" name="daily_rate" data-mask="#.##0,00">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="form-group">
-                                    <div class="col-xs-12">
-                                        <input id="training-days" type="text" placeholder="Training days" class="form-control" name="days">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <label class="checkbox checkbox-xs mr-10">
-                                    <input type="checkbox" name="cvs" value="1">
-                                    <i class="fa fa-lg icon-checkbox"></i> CVs
-                                </label>
-
-                                <label class="checkbox checkbox-xs">
-                                    <input type="checkbox" name="outline" value="1">
-                                    <i class="fa fa-lg icon-checkbox"></i> Outlines
-                                </label>
-
-                            </div>
-                        </div>
-                        <button type="submit" class="btn-lg btn btn-primary btn-rounded btn-block">Sign up</button>
-                    </form>
                 </div>
-            </div>
-            <div class="sub-content">
-                <div style="padding:24px; width: 400px; position: relative">
-                    <h1 class="mb-20" style="font-size: 1.8em;font-weight: bold;color: #fff;text-transform: capitalize">
-                        <span style="font-weight: 100; font-size:0.8em;">New project?</span><br>No problem!</h1>
-                    <p class="text-white mb-20">Are you ready to kick off your next training project?</p>
-                    <p class="text-white mb-20">Send us what training requirement do you need through the Project Request form, and we will take it from there.</p>
-                    <img src="{{asset('images/streamedops-white-logo.svg')}}" style="position:absolute; bottom:-100px;">
-                </div>
-            </div>
-
-            <!--
-            <div class="v2" style="box-shadow:none; padding: 40px 20px 20px 20px;">
-                <div class="logo"><img src="{{asset('images/streamedops-colored-logo.svg')}}" alt="" style="max-width: 250px;"></div>
-                <form method="post" class="form-horizontal">
-                    @if(count($errors) > 0)
-                        <div class="alert alert-danger col-md-12">
-                            @if(count($errors) == 1)
-                                {{$errors->first()}}
-                            @else
-                                The following errors happened:
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{$error}}</li>
-                                    @endforeach
-                                </ul>
+            @else
+                <div class="main-content">
+                    <div class="v3" style="width: 400px;">
+                        <h1 class="" style="font-size: 1.8em;font-weight: bold;color: #454545;text-transform: capitalize"><span style="font-weight: 100;color: #c1282e;">Project</span> request</h1>
+                        <form method="post" class="form-horizontal">
+                            {{csrf_field()}}
+                            @if(count($errors) > 0)
+                                <div class="alert alert-danger col-md-12">
+                                    @if(count($errors) == 1)
+                                        {{$errors->first()}}
+                                    @else
+                                        The following errors happened:
+                                        <ul>
+                                            @foreach($errors->all() as $error)
+                                                <li>{{$error}}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
                             @endif
-                        </div>
-                    @endif
-                    {{csrf_field()}}
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <input type="email" placeholder="E-mail" class="form-control" name="email" value="{{old('email')}}">
-                        </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <input type="text" placeholder="Company or organization" class="form-control" name="client">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <input type="text" placeholder="Email address" class="form-control" name="email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <input type="text" placeholder="Expected schedule" class="form-control" id="date-range" name="schedule">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="delivery-language">
+                                        <input type="radio" name="language" value="Arabic" id="arabic" checked>
+                                        <label for="arabic">Delivery in Arabic</label>
+                                        <input type="radio" name="language" value="English" id="english">
+                                        <label for="english">Delivery in English</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <textarea name="brief" id="brief" cols="30" rows="5" class="form-control" placeholder="Project brief"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="instructor-type">
+                                        <input type="radio" name="nationalities" value="arab" id="arab" checked>
+                                        <label for="arab">Arab instructors</label>
+                                        <input type="radio" name="nationalities" value="western" id="western">
+                                        <label for="western">Western instructors</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <input id="daily-rate" type="text" placeholder="Daily rate in USD" class="form-control" name="daily_rate" data-mask="#.##0,00">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <input id="training-days" type="text" placeholder="Training days" class="form-control" name="days">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class="checkbox checkbox-xs mr-10">
+                                        <input type="checkbox" name="cvs" value="1">
+                                        <i class="fa fa-lg icon-checkbox"></i> CVs
+                                    </label>
+
+                                    <label class="checkbox checkbox-xs">
+                                        <input type="checkbox" name="outline" value="1">
+                                        <i class="fa fa-lg icon-checkbox"></i> Outlines
+                                    </label>
+
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-lg btn btn-primary btn-rounded btn-block">Sign up</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <input type="password" placeholder="Password" class="form-control" name="password">
-                        </div>
+                </div>
+                <div class="sub-content">
+                    <div style="padding:24px; width: 400px; position: relative">
+                        <h1 class="mb-20" style="font-size: 1.8em;font-weight: bold;color: #fff;text-transform: capitalize">
+                            <span style="font-weight: 100; font-size:0.8em;">New project?</span><br>No problem!</h1>
+                        <p class="text-white mb-20">Are you ready to kick off your next training project?</p>
+                        <p class="text-white mb-20">Send us what training requirement do you need through the Project Request form, and we will take it from there.</p>
+                        <img src="{{asset('images/streamedops-white-logo.svg')}}" style="position:absolute; bottom:-100px;">
                     </div>
-                    <button type="submit" class="btn-lg btn btn-primary btn-block" style="margin-top:20px;">Sign in</button>
-                </form>
-            </div>
-            -->
+                </div>
+            @endif
         </div>
     </div>
 
@@ -199,8 +169,8 @@
             $('.delivery-language').radiosforbuttons();
 
 
-            $('#daily-rate').mask("#,###,000 usd", {reverse: true});
-            $('#training-days').mask("#,###,000 days", {reverse: true});
+            $('#daily-rate').mask("#,###,000", {reverse: true});
+            $('#training-days').mask("#,###,000", {reverse: true});
 
         });
     </script>

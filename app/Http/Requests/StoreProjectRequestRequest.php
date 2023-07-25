@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProjectRequestRequest extends FormRequest
@@ -17,11 +18,10 @@ class StoreProjectRequestRequest extends FormRequest
     protected function prepareForValidation() {
         $schedule = $this->get('schedule');
         $dates = explode(' - ', $schedule);
-        $start_date = $dates[0];
-        $end_date = $dates[1];
         $this->merge([
-            'start_date'=> $start_date,
-            'end_date'  => $end_date
+            'start_date'=> Carbon::createFromFormat('m/d/Y',$dates[0]),
+            'end_date'  => Carbon::createFromFormat('m/d/Y',$dates[1]),
+            'daily_rate'=> str_replace(',', '', $this->get('daily_rate'))
         ]);
     }
 
