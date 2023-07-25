@@ -32,12 +32,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app/css/flat.css')}}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <style>
-        .select2-container {
-            width: 100%;
-            margin-bottom:20px;
-            height: 39px;
-            line-height: 39px;
-        }
+
         .select2-container--default .select2-selection--multiple, .select2-dropdown {
             border-color: #e6e6e6 !important;
         }
@@ -62,7 +57,7 @@
         .input-lg {
             border-radius: 0;
         }
-        .remove-course-btn {
+        .remove-course-btn, .remove-certificate-btn {
             position: absolute;
             right: -15px;
             top: 10px;
@@ -73,15 +68,15 @@
             padding: 5px !important;
         }
 
-        .remove-course-btn .ti {
+        .remove-course-btn .ti, .remove-course-btn .ti {
             font-size: 10px;
         }
 
-        .course-entry:hover  .remove-course-btn:hover {
+        .course-entry:hover .remove-course-btn:hover, .certificate-entry:hover .remove-certificate-btn:hover {
             opacity: 1;
         }
 
-        .course-entry:hover .remove-course-btn {
+        .course-entry:hover .remove-course-btn, .certificate-entry:hover .remove-certificate-btn {
             display:block;
             opacity: .4;
         }
@@ -156,45 +151,46 @@
                             <div class="col-md-6">
                                 <label for="gender" class="control-label">Gender</label>
                                 <select name="gender" id="gender" class="form-control input-lg mb-20">
-                                    <option value="male" {{ ($candidate == 'male') ? 'selected' : '' }}>Male</option>
-                                    <option value="female" {{ ($candidate == 'female') ? 'selected' : '' }}>Female</option>
+                                    <option value="male" {{ ($candidate->gender == 'male') ? 'selected' : '' }}>Male</option>
+                                    <option value="female" {{ ($candidate->gender == 'female') ? 'selected' : '' }}>Female</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="nationality" class="control-label">Nationality</label>
                                 <select name="country_id" id="nationality" class="form-control input-lg mb-20">
                                     @foreach($countries as $country)
-                                        <option value="{{$country->id}}">{{$country->name}}</option>
+                                        <option value="{{$country->id}}" {{ ($candidate->country_id == $country->id) ? "selected" : "" }}>{{$country->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
 
                         <label for="resume" class="control-label">Resume</label>
+                        <input type="file" name="resume_file" data-buttontext="CV file" data-buttonname="btn-outline btn-primary" data-iconname="ti-file" data-rule-required="true" class="filestyle">
                         <input id="resume" type="file" class="form-control input-lg" name="resume_file">
                         <p class="muted mt-0" style="font-size: smaller;">Only .doc, .docx and pdf formats are supported. File size shouldn't exceed 5 MB.</p>
 
                         <label for="skills" class="control-label">Skills</label>
                         <select name="skills[]" id="skills" class="form-control input-lg" multiple style="width: 100%;">
                             @foreach($skills as $skill)
-                                <option value="{{$skill->id}}">{{$skill->name}}</option>
+                                <option value="{{$skill->id}}" {{ in_array($skill->id, $candidate->skill_ids) ? "selected" : "" }}>{{$skill->name}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-3">
                         <label for="image_file" class="control-label text-left" style="display: block;">Picture</label>
                         <label for="image_file" style="border:1px solid #e6e6e6; display:inline-block; padding: 3px; width: 100%">
-                            @if(!$candidate->image_file)
-                                <div class="img-container-list">
-                                    <img src="{{asset('images/avatar-male.svg')}}" id="candidate-image" style="width: 100%; border-radius: 50%;">
-                                    <p class="text-center mt-20">click to change image</p>
-                                    <p class="text-muted text-center" style="font-size: 10px;">Image will be resized to 400x400 pixels. It is recommended to be in 1x1 aspect ratio with no borders.</p>
-                                </div>
-                                <input type="file" name="image_file" id="image_file" style="display: none;">
-                            @endif
+                            <div class="img-container-list text-center">
+                                @if(!$candidate->image_file)
+                                    <img src="{{asset('images/avatar-male.svg')}}" id="candidate-image" style="width: 90%; border-radius: 50%;">
+                                @else
+                                    <img src="{{asset('images/candidates/'.$candidate->image_file)}}" id="candidate-image" style="width: 90%; border-radius: 50%;">
+                                @endif
+                                <p class="text-center mt-20">click to change image</p>
+                                <p class="text-muted text-center" style="font-size: 10px;">Image will be resized to 400x400 pixels. It is recommended to be in 1x1 aspect ratio with no borders.</p>
+                            </div>
+                            <input type="file" name="image_file" id="image_file" style="display: none;">
                         </label>
-                        <br/>
-
                     </div>
                 </div>
 
@@ -230,6 +226,30 @@
                         </div>
                         <button class="btn remove-course-btn" type="button"><i class="ti-trash"></i></button>
                     </div>
+                    @foreach($candidate->courses as $candidate_course)
+                        <div class="row course-entry" style="position:relative;">
+                            <div class="col-md-8">
+                                <select name="courses[]" class="form-control input-lg courses" style="width: 100%;">
+                                    @foreach($courses as $course)
+                                        <option value="{{$course->id}}" {{ $course->id == $candidate_course->id ? "selected" : "" }}>{{$course->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" class="form-control input-lg mb-20" name="experiences[]" placeholder="in years" value="{{$candidate_course->pivot->experience}}">
+                            </div>
+                            <div class="col-md-2">
+                                <select name="tiers[]" class="form-control input-lg tiers" style="width: 100%;">
+                                    <option></option>
+                                    <option value="1">Tier 1</option>
+                                    <option value="2">Tier 2</option>
+                                    <option value="3">Tier 3</option>
+                                    <option value="4">Tier 4</option>
+                                </select>
+                            </div>
+                            <button class="btn remove-course-btn" type="button"><i class="ti-trash"></i></button>
+                        </div>
+                    @endforeach
                 </div>
                 <button type="button" class="btn btn-info" id="add-course"><i class="ti-plus"></i> add another course</button>
 
@@ -255,6 +275,23 @@
                         </div>
                         <button class="btn remove-course-btn" type="button"><i class="ti-trash"></i></button>
                     </div>
+
+                    @foreach($candidate->certificates as $candidate_certificate)
+                        <div class="row certificate-entry" style="position:relative;">
+                            <div class="col-md-8">
+                                <select name="certificates[]" class="form-control input-lg certificates" style="width: 100%;">
+                                    <option></option>
+                                    @foreach($certificates as $certificate)
+                                        <option value="{{$certificate->id}}" {{ $certificate->id == $candidate_certificate->id ? "selected" : ""}}>{{$certificate->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="date" class="form-control input-lg mb-20" name="certification_dates[]" value="{{$candidate_certificate->pivot->certified_at}}">
+                            </div>
+                            <button class="btn remove-certificate-btn" type="button"><i class="ti-trash"></i></button>
+                        </div>
+                    @endforeach
                 </div>
 
                 <button type="button" class="btn btn-info" id="add-certificate"><i class="ti-plus"></i> add another certificate</button>
@@ -272,6 +309,8 @@
 
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script type="text/javascript" src="{{asset('plugins/bootstrap-filestyle/src/bootstrap-filestyle.js')}}"></script>
+
     <script>
 
         $(document).ready(function() {

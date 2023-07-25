@@ -79,4 +79,21 @@ class CandidateController extends Controller
         if(!$candidate) abort(404);
         return view('admin.candidates.profile', compact('candidate'));
     }
+
+    public function edit($id) {
+        $candidate  = Candidate::find($id);
+        $countries  = Countries::all();
+        $skills     = Skill::all();
+        $courses    = Course::all();
+        $certificates = Certificate::all();
+        if(!$candidate) abort(404);
+        return view('admin.candidates.candidate-form', [
+            'candidate' => $candidate,
+            'method'    => 'put',
+            'countries' => $countries,
+            'skills'    => $skills,
+            'courses'   => $courses,
+            'certificates' => $certificates
+        ]);
+    }
 }

@@ -31,4 +31,12 @@ class Candidate extends Model
     public function getStatusAttribute() {
         return ($this->verified_at) ? 'Verified' : 'Pending Approval';
     }
+
+    public function getSkillIdsAttribute() {
+        return $this->skills->pluck('id')->toArray();
+    }
+
+    public function getCourseIdsAttribute() {
+        return $this->courses->pluck('id')->toArray();
+    }
 }

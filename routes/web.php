@@ -7,8 +7,8 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ClientController;
-use App\Models\ProjectRequestController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ProjectRequestController;
 
 
 
@@ -37,6 +37,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
 
     Route::post('/candidates/create', [CandidateController::class, 'store'])->name('candidate.store');
     Route::get('/candidates/create', [CandidateController::class, 'create'])->name('candidate.create');
+    Route::post('/candidates/{id}/edit', [CandidateController::class, 'update'])->name('candidate.update');
+    Route::get('/candidates/{id}/edit', [CandidateController::class, 'edit'])->name('candidate.edit');
     Route::get('/candidates/{id}', [CandidateController::class, 'profile'])->name('candidate.profile');
     Route::get('/candidates', [CandidateController::class, 'list'])->name('candidate.list');
 
