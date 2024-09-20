@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
 use Illuminate\Http\Request;
 
 class FaqController extends Controller
@@ -11,15 +12,13 @@ class FaqController extends Controller
      */
     public function index()
     {
-        //
+        $faqs = Faq::all();
+        return view('faqs.index', compact('faqs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('faqs.create');
     }
 
     /**
@@ -27,38 +26,33 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Faq::create($request->all());
+        return redirect()->route('faqs.index')->with('success', 'FAQ created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $faq = Faq::find($id);
+        return view('faqs.show', compact('faq'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $faq = Faq::find($id);
+        return view('faqs.edit', compact('faq'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $faq = Faq::find($id);
+        $faq->update($request->all());
+        return redirect()->route('faqs.index')->with('success', 'FAQ updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $faq = Faq::find($id);
+        $faq->delete();
+        return redirect()->route('faqs.index')->with('success', 'FAQ deleted successfully');
     }
 }

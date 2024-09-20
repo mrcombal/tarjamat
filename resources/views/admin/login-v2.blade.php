@@ -18,9 +18,9 @@
 
     <body style="background-color: #000232;" class="body-bg-full v2">
         <div class="container page-container">
-            <div class="page-content" style="background-color: #c1272d;">
+            <div class="page-content" style="background-color: #5C7A30;">
                 <div class="v2" style="box-shadow:none; padding: 40px 20px 20px 20px;">
-                    <div class="logo"><img src="{{asset('images/streamedops-colored-logo.svg')}}" alt="" style="max-width: 250px;"></div>
+                    <div class="logo"><img src="{{asset('images/tarjamat-logo-colored.svg')}}" alt="" style="width: 80%;"></div>
                         <form method="post" class="form-horizontal">
                             @if(count($errors) > 0)
                                 <div class="alert alert-danger col-md-12">

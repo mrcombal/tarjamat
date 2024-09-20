@@ -56,7 +56,7 @@
 
 <body data-sidebar-color="sidebar-light" class="sidebar-light claro">
     <header>
-        <a href="{{url('/admin')}}" class="brand pull-left"><img src="{{asset('images/streamedops-white-logo.svg')}}" style="max-width: 80%;"></a><a href="javascript:;" role="button" class="hamburger-menu pull-left"><span></span></a>
+        <a href="{{url('/admin')}}" class="brand pull-left"><img src="{{asset('images/tarjamat-logo-white.svg')}}" style="max-width: 80%;"></a><a href="javascript:;" role="button" class="hamburger-menu pull-left"><span></span></a>
         <ul class="notification-bar list-inline pull-right">
             <li class="dropdown visible-lg visible-md">
                 <a id="dropdownMenu2" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle header-icon">
@@ -75,15 +75,6 @@
             <ul class="list-unstyled navigation mb-20 mt-20">
                 <li class="sidebar-category pt-0">Main</li>
                 <li><a href="{{route('index')}}" class="bubble {{Request::is('admin') ? 'active' : Request::url()}}"><i class="ti-home"></i><span class="sidebar-title">Dashboard</span></a></li>
-                <li><a href="{{route('candidate.list')}}" class="{{Request::is('admin/candidates*') ? 'active' : Request::url()}}"><i class="ti-user"></i><span>Candidates</span></a></li>
-                <li><a href="{{route('skill.list')}}" class="{{Request::is('admin/skills') ? 'active' : Request::url()}}"><i class="ti-game"></i><span>Skills</span></a></li>
-                <li><a href="{{route('course.list')}}" class="{{Request::is('admin/courses') ? 'active' : Request::url()}}"><i class="ti-book"></i><span>Courses</span></a></li>
-            </ul>
-            <ul class="list-unstyled navigation mb-20 mt-20">
-                <li class="sidebar-category pt-0">Management</li>
-                <li><a href="{{route('client.list')}}" class="{{Request::is('admin/clients*') ? 'active' : Request::url()}}"><i class="ti-briefcase"></i><span>Clients</span></a></li>
-                <li><a href="{{route('project.list')}}" class="{{Request::is('admin/projects*') ? 'active' : Request::url()}}"><i class="ti-light-bulb"></i><span>Projects</span></a></li>
-                <li><a href="{{url('/admin/admin-user')}}" class="{{Request::is('admin/admin-user*') ? 'active' : Request::url()}}"><i class="ti-user"></i><span>Users</span></a></li>
             </ul>
         </aside>
         <div class="page-container">
