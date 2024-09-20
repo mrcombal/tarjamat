@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('admin.master')
 
 @section('content')
-    <h1>Add Generic Content</h1>
+    <h1>Edit Generic Content</h1>
 
-    <form action="{{ route('generic-content.store', $content->id) }}" method="POST">
+    <form action="{{ route('generic-content.update', $content->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div>

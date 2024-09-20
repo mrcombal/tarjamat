@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.master')
 
 @section('content')
     <h1>Generic Content Details</h1>
