@@ -79,6 +79,28 @@ main {
     background: url('../images/services.svg') bottom right no-repeat;
 }
 
+.hero-section.home .container {
+    background: url('../images/t-letter-white.svg') bottom right no-repeat;
+}
+
+.hero-section.home p {
+    margin-bottom: 30px;
+}
+
+.hero-section.home a.btn {
+    color: #fff;
+    border: 1px solid;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-right:20px;
+    font-size: 18px;
+}
+
+.hero-section.home a.btn-white, .hero-section.home a.btn:hover {
+    background: #fff;
+    color: #5C7A30;
+}
+
 .text-custom {
     color: #5C7A30;
 }
