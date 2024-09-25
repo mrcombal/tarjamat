@@ -10,5 +10,5 @@ class Faq extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['question', 'number', 'display_order'];
+    protected $fillable = ['question', 'answer', 'number', 'display_order'];
 }

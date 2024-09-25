@@ -29,7 +29,16 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        Service::create($request->all());
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'display_order' => 'required|integer',
+            'icon' => 'required|string|max:255',
+            'color' => 'required|string|max:7', // Assuming color is a hex code
+        ]);
+    
+        Service::create($validated);
+    
         return redirect()->route('services.index')->with('success', 'Service created successfully');
     }
 
@@ -45,13 +54,22 @@ class ServiceController extends Controller
         return view('services.edit', compact('service'));
     }
 
+ 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'display_order' => 'required|integer',
+            'icon' => 'required|string|max:255',
+            'color' => 'required|string|max:7',
+        ]);
+
         $service = Service::find($id);
-        $service->update($request->all());
+        $service->update($validated);
+
         return redirect()->route('services.index')->with('success', 'Service updated successfully');
     }
-
     public function destroy($id)
     {
         $service = Service::find($id);

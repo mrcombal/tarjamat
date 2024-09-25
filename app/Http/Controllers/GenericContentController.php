@@ -40,13 +40,13 @@ class GenericContentController extends Controller
     {
         $content = GenericContent::find($id);
         $content->update($request->all());
-        return redirect()->route('generic-contents.index')->with('success', 'Content updated successfully');
+        return redirect()->route('generic-content.index')->with('success', 'Content updated successfully');
     }
 
     public function destroy($id)
     {
         $content = GenericContent::find($id);
         $content->delete();
-        return redirect()->route('generic-contents.index')->with('success', 'Content deleted successfully');
+        return redirect()->route('generic-content.index')->with('success', 'Content deleted successfully');
     }
 }

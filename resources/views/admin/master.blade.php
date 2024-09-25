@@ -75,6 +75,9 @@
             <ul class="list-unstyled navigation mb-20 mt-20">
                 <li class="sidebar-category pt-0">Main</li>
                 <li><a href="{{route('index')}}" class="bubble {{Request::is('admin') ? 'active' : Request::url()}}"><i class="ti-home"></i><span class="sidebar-title">Dashboard</span></a></li>
+                <li><a href="{{route('faqs.index')}}" class="bubble {{Request::is('admin/faqs') ? 'active' : Request::url()}}"><i class="ti-home"></i><span class="sidebar-title">FAQs</span></a></li>
+                <li><a href="{{route('services.index')}}" class="bubble {{Request::is('admin/services') ? 'active' : Request::url()}}"><i class="ti-home"></i><span class="sidebar-title">Services</span></a></li>
+                <li><a href="{{route('generic-content.index')}}" class="bubble {{Request::is('admin/generic-content') ? 'active' : Request::url()}}"><i class="ti-home"></i><span class="sidebar-title">Generic Content</span></a></li>
             </ul>
         </aside>
         <div class="page-container">

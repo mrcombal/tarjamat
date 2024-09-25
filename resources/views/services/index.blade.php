@@ -1,12 +1,48 @@
-@extends('layouts.app')
+@extends('admin.master')
 
 @section('content')
-    <h1>Generic Content List</h1>
-    <a href="{{ route('generic-content.create') }}">Create New Content</a>
+   
+    <div class="container">
+        <h1>Services</h1>
+        <a href="{{ route('services.create') }}" class="btn btn-primary">Create New Service</a>
 
-    <ul>
-        @foreach ($contents as $content)
-            <li>{{ $content->key }}: {{ $content->value }}</li>
-        @endforeach
-    </ul>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Display Order</th>
+                    <th>Icon</th>
+                    <th>Color</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($services as $service)
+                    <tr>
+                        <td>{{ $service->name }}</td>
+                        <td>{{ $service->description }}</td>
+                        <td>{{ $service->display_order }}</td>
+                        <td>{{ $service->icon }}</td>
+                        <td>{{ $service->color }}</td>
+                        <td>
+                            <a href="{{ route('services.show', $service->id) }}" class="btn btn-info btn-sm">Show</a>
+                            <a href="{{ route('services.edit', $service->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ route('services.destroy', $service->id) }}" method="POST" style="display:inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection

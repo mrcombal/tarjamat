@@ -1,16 +1,11 @@
 <?php
 
-use App\Http\Controllers\GenericContentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CandidateController;
-use App\Http\Controllers\SkillController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\AjaxController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\RegistrationController;
-use App\Http\Controllers\ProjectRequestController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\GenericContentController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\UserController;
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
 
