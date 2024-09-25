@@ -1,0 +1,141 @@
+body {
+    font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+header .logo {
+    width: 150px;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    margin-top: -80px;
+}
+
+.navbar {
+    padding: 0;
+}
+.navbar-nav .nav-link {
+    padding: 20px 0 !important;
+    font-size: 14px;
+    margin: 0 20px;
+}
+
+.navbar-nav .nav-item.active .nav-link{
+    font-weight: 900;
+}
+.navbar-nav .nav-item:hover .nav-link, .navbar-nav .nav-item.active .nav-link{
+    border-bottom: 3px solid #fff;
+}
+
+.navbar-nav .nav-item.login {
+
+}
+
+.navbar-nav .nav-item.login .nav-link {
+    padding: 10px 30px !important;
+    margin: 10px 0 10px 10px;
+    border-radius: 30px;
+    border: 1px solid #fff;
+}
+
+.navbar-nav .nav-item.login:hover .nav-link {
+    border-bottom: 0;
+    background: #fff;
+    color: #5C7A30 !important;
+}
+
+
+/* Sticky Navbar */
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background-color: #455F1FE3;
+}
+
+.hero-section {
+    background: url('../images/green-poly-bg.png') center center no-repeat;
+    background-size: cover;
+    text-align: justify;
+}
+
+.hero-section .container {
+    padding: 130px 0 50px 0;
+}
+
+.hero-section.about .container {
+    background: url('../images/key-of-life.svg') bottom right no-repeat;
+}
+
+.text-custom {
+    color: #5C7A30;
+}
+
+/* Primary Background */
+.bg-primary {
+    background: url('../images/green-poly-bg.png') center center no-repeat;
+    background-size: cover;
+}
+
+/* Font Weights for different sections */
+h1, .display-4 {
+    font-weight: 700; /* Bold for main headers */
+}
+
+h2, h3 {
+    font-weight: 600; /* Semi-bold for subheadings */
+}
+
+p, a, li, .lead {
+    font-weight: 400; /* Regular weight for body text */
+}
+
+/* Buttons */
+.btn-outline-light {
+    font-weight: 600; /* Semi-bold for buttons */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #fff; /* White background */
+}
+
+.footer-logo {
+    width: 150px; /* Adjust logo size as necessary */
+}
+
+footer .social-icons i {
+    color: #e5e5e5; /* Light gray color for icons */
+    margin: 0 10px;
+    transition: color 0.3s ease;
+    font-size: 20px;
+}
+
+footer .social-icons i:hover {
+    color: #5C7A30;
+}
+
+footer p {
+    color: #e5e5e5;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+@media (max-width: 767.98px) {
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer .social-icons {
+        margin-bottom: 15px;
+    }
+
+    .footer-logo {
+        margin-top: 15px;
+    }
+}
