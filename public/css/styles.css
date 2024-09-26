@@ -129,6 +129,49 @@ p, a, li, .lead {
     font-weight: 600; /* Semi-bold for buttons */
 }
 
+/* Numerical facts section - Homepage */
+.fact {
+    text-align: center;
+}
+
+.fact .circle {
+
+}
+
+.fact .circle .number {
+
+}
+
+.fact .circle .word {
+
+}
+
+.fact . description {
+
+}
+
+/* Services section - Homepage */
+.services {
+    background: url('../images/white-poly-bg.png') center center no-repeat;
+    padding: 50px 0;
+}
+
+.services .service {
+    text-align: center;
+}
+
+.services .service .service-icon {
+
+}
+
+.services .service .service-title {
+    font-size: 16px;
+}
+
+.services .service .service-description {
+    font-size: 12px;
+}
+
 /* Footer Styles */
 footer {
     background-color: #fff; /* White background */
