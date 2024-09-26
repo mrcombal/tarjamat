@@ -1,19 +1,24 @@
 @extends('admin.master')
 
 @section('content')
-    <h1>Add Generic Content</h1>
+    <div class="container">
+        <h1>Add Generic Content</h1>
 
-    <form action="{{ route('generic-content.store') }}" method="POST">
-        @csrf
-        @method('POST')
-        <div>
-            <label for="key">Key</label>
-            <input type="text" id="key" name="key"  required>
-        </div>
-        <div>
-            <label for="value">Value</label>
-            <textarea id="value" name="value" required></textarea>
-        </div>
-        <button type="submit">Save</button>
-    </form>
+        <form action="{{ route('generic-content.store') }}" method="POST">
+            @csrf
+            @method('POST')
+
+            <div class="form-group">
+                <label for="key">Key</label>
+                <input type="text" class="form-control" id="key" name="key" value="{{ old('key') }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="value">Value</label>
+                <textarea class="form-control" id="value" name="value" rows="5" required>{{ old('value') }}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
 @endsection
