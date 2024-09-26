@@ -135,41 +135,64 @@ p, a, li, .lead {
 }
 
 .fact .circle {
-
+    margin-bottom: 20px;
+    border: 8px solid #5C7A30;
+    display: inline-block;
+    padding: 50px 0;
+    border-radius: 130px;
+    width: 70%;
 }
 
 .fact .circle .number {
-
+    font-size: 48px;
+    font-weight: 800;
+    color: #5C7A30;
 }
 
 .fact .circle .word {
-
+    font-size: 17px;
+    font-weight: 700;
 }
 
-.fact . description {
-
+.fact .description {
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 400;
 }
 
 /* Services section - Homepage */
-.services {
+.home-services {
     background: url('../images/white-poly-bg.png') center center no-repeat;
+    background-size: cover;
     padding: 50px 0;
-}
-
-.services .service {
     text-align: center;
 }
 
-.services .service .service-icon {
-
+.home-services .service {
+    text-align: center;
 }
 
-.services .service .service-title {
+.home-services .service .service-icon {
+    margin-bottom: 20px;
+}
+
+.home-services .service .service-title {
     font-size: 16px;
 }
 
-.services .service .service-description {
-    font-size: 12px;
+.home-services .service .service-description {
+    font-size: 14px;
+}
+
+.home-services a.btn {
+    color: #fff;
+    border: 1px solid;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin:0 auto;
+    font-size: 18px;
+    background: #5C7A30;
+    display: inline-block;
 }
 
 /* Footer Styles */
