@@ -13,7 +13,7 @@
     <header class="sticky-top text-white">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{route('website.index')}}">
                     <img src="{{asset('images/tarjamat-logo.svg')}}" alt="Tarjamat Logo" class="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
