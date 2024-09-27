@@ -273,6 +273,41 @@ footer p {
     margin-bottom: 0;
 }
 
+/* Form Styling */
+.form-control {
+    border-radius: 20px; /* Rounded input boxes */
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+.btn-primary {
+    background-color: #5C7A30;
+    border-color: #5C7A30;
+    padding: 10px 30px;
+    font-size: 16px;
+    border-radius: 25px;
+}
+
+.btn-primary:hover {
+    background-color: #3E5521;
+    border-color: #3E5521;
+}
+
+/* Contact Info Styling */
+.contact-info h4 {
+    margin-top: 30px;
+    color: #5C7A30;
+    font-weight: bold;
+}
+
+.contact-info a {
+    color: #5C7A30;
+}
+
+.contact-info p {
+    color: #000;
+}
+
 @media (max-width: 767.98px) {
     footer .container {
         flex-direction: column;
