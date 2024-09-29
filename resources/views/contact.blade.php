@@ -49,18 +49,23 @@
             </div>
             <div class="col-md-4 offset-md-1">
                 <div class="contact-info">
-                    <h4>Tarjamat Office:</h4>
-                    <p>PO Box 172<br>Clifton Park, NY 12065<br>USA</p>
-
-                    <h4>Need to call?</h4>
-                    <p>+1 (226) 224-8395</p>
-
-                    <h4>Email:</h4>
-                    <p>General Inquiries<br><a href="mailto:info@arabictarjamat.com">info@arabictarjamat.com</a></p>
-                    <p>Request a quote<br><a href="mailto:quote@arabictarjamat.com">quote@arabictarjamat.com</a></p>
-
-                    <h4>LinkedIn:</h4>
-                    <p><a href="https://linkedin.com/in/tarjamat-llc-6a461042" target="_blank">linkedin.com/in/tarjamat-llc-6a461042</a></p>
+                    <div class="contact-item">
+                        <h4>Tarjamat Office:</h4>
+                        <p>PO Box 172<br>Clifton Park, NY 12065<br>USA</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Need to call?</h4>
+                        <p>+1 (226) 224-8395</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Email:</h4>
+                        <p>General Inquiries<br><a href="mailto:info@arabictarjamat.com">info@arabictarjamat.com</a></p>
+                        <p>Request a quote<br><a href="mailto:quote@arabictarjamat.com">quote@arabictarjamat.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>LinkedIn:</h4>
+                        <p><a href="https://linkedin.com/in/tarjamat-llc-6a461042" target="_blank">linkedin.com/in/tarjamat-llc-6a461042</a></p>
+                    </div>
                 </div>
             </div>
             <!--<div class="col-md-4">

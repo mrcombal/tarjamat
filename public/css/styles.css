@@ -12,6 +12,7 @@ a {
 
 main {
     margin-top: -80px;
+    border-bottom: 1px solid #eee;
 }
 
 .navbar {
@@ -254,15 +255,15 @@ ul.service-list li.service-item p {
 
 /* Footer Styles */
 footer {
-    background-color: #fff; /* White background */
+    background-color: #fff;
 }
 
 .footer-logo {
-    width: 150px; /* Adjust logo size as necessary */
+    width: 150px;
 }
 
 footer .social-icons i {
-    color: #e5e5e5; /* Light gray color for icons */
+    color: #e5e5e5;
     margin: 0 10px;
     transition: color 0.3s ease;
     font-size: 20px;
@@ -302,7 +303,8 @@ footer p {
 .contact-info h4 {
     margin-top: 30px;
     color: #5C7A30;
-    font-weight: bold;
+    font-weight: 600;
+    font-size:20px;
 }
 
 .contact-info a {
@@ -311,6 +313,18 @@ footer p {
 
 .contact-info p {
     color: #000;
+    margin-bottom: 0;
+}
+
+.contact-info .contact-item {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+.contact-info .contact-item:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 /* Media Queries for Mobile View */
