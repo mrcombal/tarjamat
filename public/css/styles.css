@@ -30,6 +30,11 @@ main {
     border-bottom: 3px solid #fff;
 }
 
+.navbar-toggler {
+    color: #fff;
+    border-color: #fff;
+}
+
 .navbar-nav .nav-item.login {
 
 }
@@ -392,6 +397,7 @@ footer p {
     .hero-section.services .container,
     .hero-section.home .container {
         background: none;
+        padding-bottom: 50px;
     }
 }
 
