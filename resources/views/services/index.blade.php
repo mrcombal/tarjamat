@@ -29,7 +29,13 @@
                         <td>{{ $service->name }}</td>
                         <td>{{ $service->description }}</td>
                         <td>{{ $service->display_order }}</td>
-                        <td>{{ $service->icon }}</td>
+                        <td>
+                            @if ($service->icon)
+                                <img src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->name }}" width="50">
+                            @else
+                                No icon
+                            @endif
+                        </td>
                         <td>{{ $service->color }}</td>
                         <td>
                             <a href="{{ route('services.show', $service->id) }}" class="btn btn-info btn-sm">Show</a>
